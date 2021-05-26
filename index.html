@@ -1,12 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
+    <h1>Cat Facts</h1>
+    <div style="background-color: coral; width: 400px;">
+    </div>
+
+
+    <script>
+         const div = document.querySelector('div')
+        let data = ""
+         const catFacts = (facts) => {
+             div.innerHTML= ""
+
+             fetch('https://cat-fact.herokuapp.com/facts')
+         .then((response) => {
+             console.log(response.json())
+         })
+         .then((data) => {
+             console.log(data.Search);
+            
+             data.Search.forEach((facts) => {
+                 let p = `<h2> Cat fact n°${facts.indexOf}</h2>
+                 <p> ${facts.text}
+                    </p>`
+                 console.log(facts.text)
+                 div.insertAdjacentHTML("beforeend", p)
+             });
+         })
+         }
+         
+        catFacts()
+             
+             
+    </script>
+    
+    
     
 </body>
+
 </html>
